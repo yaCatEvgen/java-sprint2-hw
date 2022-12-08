@@ -2,31 +2,29 @@ public class Checker {
     public MonthlyReport monthlyReport;
     public YearlyReport yearlyReport;
 
-    public Checker (MonthlyReport monthlyReport, YearlyReport yearlyReport) {
+    public Checker(MonthlyReport monthlyReport, YearlyReport yearlyReport) {
         this.monthlyReport = monthlyReport;
         this.yearlyReport = yearlyReport;
     }
 
     public boolean check() {
         boolean check = false;
-        int[] newMasM = monthlyReport.podschetDohRas();
-        int[] newMasY = yearlyReport.podschetDohRas();
+        int[] profitMonth = monthlyReport.profitOrExpense();
+        int[] profitYear = yearlyReport.profitOrExpense();
 
-        if((newMasM[0] == newMasY[0]) && (newMasM[1] == newMasY[1])) {
-            System.out.println("поздравляем всё сошлось");
-            check =  true;
-        } else if (newMasM[0] == newMasY[0]) {
-            System.out.println("доходы не сходяться");
-            check =  false;
-        } else if (newMasM[1] == newMasY[1]) {
-            System.out.println("расходы не сходяться");
-            check =  false;
+        if ((profitMonth[0] == profitYear[0]) && (profitMonth[1] == profitYear[1])) {
+            System.out.println("Поздравляем, всё сошлось");
+            check = true;
+        } else if (profitMonth[0] == profitYear[0]) {
+            System.out.println("доходы не сходятся");
+            check = false;
+        } else if (profitMonth[1] == profitYear[1]) {
+            System.out.println("расходы не сходятся");
+            check = false;
         } else {
-            System.out.println(" не сходиться ни расход ни доход");
-            check =  false;
+            System.out.println("Ошибка! Ни расход, ни доход не сходятся.");
+            check = false;
         }
         return check;
-
-
     }
 }
