@@ -10,21 +10,27 @@ public class MonthlyReport {
     int[] profitAndExpense = new int[2];
 
         public void loadFile(String path) {
-        String content = readFileContentsOrNull(path);
-        String[] lines = content.split("\r?\n");
+            String content = readFileContentsOrNull(path);
 
-        for (int i = 1; i < lines.length; i++) {
-            String line = lines[i];
-            String[] parts =line.split(",");
-            String itemName = parts[0];
-            boolean isExpense = Boolean.parseBoolean(parts[1]);
-            int quantity = Integer.parseInt(parts[2]);
-            int sumOfOne = Integer.parseInt(parts[3]);
+            if (!(content == null)) {
+                String[] lines = content.split("\r?\n");
 
-            Month month = new Month(itemName, isExpense, quantity, sumOfOne);
-            months.add(month);
+                for (int i = 1; i < lines.length; i++) {
+                    String line = lines[i];
+                    String[] parts = line.split(",");
+                    String itemName = parts[0];
+                    boolean isExpense = Boolean.parseBoolean(parts[1]);
+                    int quantity = Integer.parseInt(parts[2]);
+                    int sumOfOne = Integer.parseInt(parts[3]);
+
+                    Month month = new Month(itemName, isExpense, quantity, sumOfOne);
+                    months.add(month);
+                }
+            } else {
+                System.out.println("null point");
+            }
         }
-       }
+
 
        public void printStatisticPerMonth() {
             for (Month month : months) {

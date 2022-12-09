@@ -10,7 +10,7 @@ public class YearlyReport {
     public YearlyReport(String path) {
         String allStrOfFile = readFileContentsOrNull(path);
 
-        if (!(allStrOfFile.equals(null))) {
+        if (!(allStrOfFile == null)) {
             String[] lines = allStrOfFile.split("\r?\n");
 
             for (int i = 1; i < lines.length; i++) {

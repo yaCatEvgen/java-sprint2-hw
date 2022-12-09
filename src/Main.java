@@ -21,23 +21,24 @@ public class Main {
                 yearlyReport = new YearlyReport("resources/y.2021.csv");
                 System.out.println("годовой отчёт cформирован");
             } else if (userInput == 3) {
-                if (monthlyReport.equals(null) && yearlyReport.equals(null)) {
+                if ((monthlyReport == null) || (yearlyReport == null)) {
                     System.out.println("Объекта нет! null");
                 } else {
                     Checker checker = new Checker(monthlyReport, yearlyReport);
                     System.out.println(checker.check());
                 }
             } else if (userInput == 4) {
-                if (monthlyReport.equals(null)) {
+                if (monthlyReport == null) {
                     System.out.println("Объекта нет! null");
                 } else {
                     monthlyReport.printStatisticPerMonth();
                 }
             } else if (userInput == 5) {
-                if (monthlyReport.equals(null)) {
+                if (yearlyReport == null) {
                     System.out.println("Объекта нет! null");
+                } else {
+                    yearlyReport.printStatisticYerly();
                 }
-                yearlyReport.printStatisticYerly();
             } else if (userInput == 0) {
                 break;
             } else {
